@@ -1,22 +1,14 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
-// Replace with your Firebase config
 const firebaseConfig = {
-     apiKey: "AIzaSyCCviafJ5j7SMKpu27OntMxCBYHYA0KZsY",
-
-  authDomain: "movieflix-19c15.firebaseapp.com",
-
-  projectId: "movieflix-19c15",
-
-  storageBucket: "movieflix-19c15.firebasestorage.app",
-
-  messagingSenderId: "586615703476",
-
-  appId: "1:586615703476:web:5bacb0414143cb55a854e1",
-
-  measurementId: "G-XJDR73Y330"
-
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
