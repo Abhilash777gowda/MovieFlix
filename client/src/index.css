@@ -1,0 +1,453 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================
+   THEME VARIABLES
+   ============================================= */
+
+/* ── Dark Mode (default) ── */
+:root,
+html.dark {
+  --bg-primary: #141414;
+  --bg-secondary: #181818;
+  --bg-card: #1c1c1c;
+  --bg-elevated: #222222;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-mid: rgba(255, 255, 255, 0.12);
+  --text-primary: #ffffff;
+  --text-secondary: #a3a3a3;
+  --text-muted: #525252;
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-hover: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(20, 20, 20, 0.80);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+}
+
+/* ── Light Mode ── */
+html.light {
+  --bg-primary: #f3f4f6;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #e5e7eb;
+  --border-subtle: rgba(0, 0, 0, 0.07);
+  --border-mid: rgba(0, 0, 0, 0.12);
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --surface: rgba(0, 0, 0, 0.04);
+  --surface-hover: rgba(0, 0, 0, 0.07);
+  --glass-bg: rgba(243, 244, 246, 0.90);
+  --scrollbar-thumb: rgba(0, 0, 0, 0.2);
+}
+
+/* =============================================
+   CRITICAL RESET - Overrides Vite defaults
+   ============================================= */
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  max-width: 100% !important;
+  width: 100%;
+  text-align: left;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@layer components {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Custom Netflix Transitions */
+.transition-netflix {
+  transition: all 450ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Row Scroll Snap */
+.row-container {
+  scroll-snap-type: x mandatory;
+}
+
+.row-item {
+  scroll-snap-align: start;
+}
+
+/* Glow effects */
+.glow-red {
+  box-shadow: 0 0 20px rgba(229, 9, 20, 0.4);
+}
+
+/* Glassmorphism */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+}
+
+/* =============================================
+   LIGHT MODE OVERRIDES — comprehensive
+   ============================================= */
+
+/* ── Backgrounds ── */
+html.light .bg-\[\#141414\] {
+  background-color: var(--bg-primary) !important;
+}
+
+html.light .bg-\[\#181818\] {
+  background-color: var(--bg-secondary) !important;
+}
+
+html.light .bg-\[\#1c1c1c\] {
+  background-color: var(--bg-card) !important;
+}
+
+html.light .bg-\[\#222\] {
+  background-color: var(--bg-elevated) !important;
+}
+
+html.light .bg-\[\#222222\] {
+  background-color: var(--bg-elevated) !important;
+}
+
+html.light .bg-\[\#2a2a2a\] {
+  background-color: #d1d5db !important;
+}
+
+html.light .bg-\[\#333\] {
+  background-color: #e5e7eb !important;
+}
+
+html.light .bg-\[\#1e1e1e\] {
+  background-color: #f9fafb !important;
+}
+
+/* ── Black overlays/backdrops → light equivalents ── */
+html.light .bg-black\/85 {
+  background-color: rgba(0, 0, 0, 0.35) !important;
+}
+
+html.light .bg-black\/90 {
+  background-color: rgba(0, 0, 0, 0.40) !important;
+}
+
+html.light .bg-black\/70 {
+  background-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+html.light .bg-black\/50 {
+  background-color: rgba(0, 0, 0, 0.10) !important;
+}
+
+html.light .bg-black\/40 {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light .bg-black\/30 {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ── Surfaces / translucent ── */
+html.light .bg-white\/5 {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light .bg-white\/\[0\.02\] {
+  background-color: rgba(0, 0, 0, 0.02) !important;
+}
+
+html.light .bg-white\/\[0\.08\] {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light .bg-white\/10 {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+html.light .hover\:bg-white\/5:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ── Text ── */
+html.light .text-white {
+  color: var(--text-primary) !important;
+}
+
+html.light .text-gray-100 {
+  color: #111827 !important;
+}
+
+html.light .text-gray-200 {
+  color: #374151 !important;
+}
+
+html.light .text-gray-300 {
+  color: #4b5563 !important;
+}
+
+html.light .text-gray-400 {
+  color: #6b7280 !important;
+}
+
+html.light .text-gray-500 {
+  color: #6b7280 !important;
+}
+
+html.light .text-gray-600 {
+  color: #9ca3af !important;
+}
+
+html.light .text-gray-700 {
+  color: #d1d5db !important;
+}
+
+/* placeholder text in inputs */
+html.light ::placeholder {
+  color: #9ca3af !important;
+}
+
+/* ── Borders ── */
+html.light .border-white\/5 {
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+html.light .border-white\/8 {
+  border-color: rgba(0, 0, 0, 0.07) !important;
+}
+
+html.light .border-white\/10 {
+  border-color: rgba(0, 0, 0, 0.09) !important;
+}
+
+html.light .border-white\/20 {
+  border-color: rgba(0, 0, 0, 0.13) !important;
+}
+
+html.light .border-white\/30 {
+  border-color: rgba(0, 0, 0, 0.18) !important;
+}
+
+html.light .border-gray-600 {
+  border-color: #d1d5db !important;
+}
+
+html.light .border-gray-400 {
+  border-color: #9ca3af !important;
+}
+
+/* ── Navbar ── */
+html.light nav.fixed {
+  background: rgba(249, 250, 251, 0.97) !important;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Override the JS-controlled gradient bg on scroll */
+html.light nav.fixed.bg-\[\#141414\]\/95 {
+  background: rgba(249, 250, 251, 0.97) !important;
+}
+
+/* ── Inputs / Search ── */
+html.light input,
+html.light input[type="text"],
+html.light input[type="search"] {
+  color: var(--text-primary) !important;
+  background-color: transparent !important;
+}
+
+/* Search bar in Navbar */
+html.light form input.bg-transparent {
+  color: #111827 !important;
+}
+
+/* Search form container */
+html.light form .bg-\[\#1c1c1c\] {
+  background-color: #f3f4f6 !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ── Row / Movie Row ── */
+/* Row scroll arrows — make bg lighter */
+html.light [style*="linear-gradient(to right, rgba(0,0,0"] {
+  background: linear-gradient(to right, rgba(200, 200, 200, 0.85), transparent) !important;
+}
+
+html.light [style*="linear-gradient(to left, rgba(0,0,0"] {
+  background: linear-gradient(to left, rgba(200, 200, 200, 0.85), transparent) !important;
+}
+
+/* Arrow icons in rows — dark on light bg */
+html.light .text-white.drop-shadow-lg {
+  color: #374151 !important;
+}
+
+/* ── Modals backdrop ── */
+html.light .bg-black\/85 {
+  background-color: rgba(0, 0, 0, 0.45) !important;
+}
+
+html.light .backdrop-blur-sm {
+  backdrop-filter: blur(4px) !important;
+}
+
+/* Modal inner box */
+html.light .shadow-\[0_30px_100px_rgba\(0\,0\,0\,0\.9\)\] {
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.2) !important;
+}
+
+html.light .shadow-\[0_30px_100px_rgba\(0\,0\,0\,0\.95\)\] {
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.22) !important;
+}
+
+/* ── Buttons that need to stay white (e.g., Play button) ── */
+/* Don't override .bg-white buttons — they're intentionally white */
+
+/* Buttons with bg-white/10 */
+html.light .bg-white\/10 {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* ── Notification & person panel tag bg ── */
+html.light .bg-\[\#e50914\]\/20 {
+  background-color: rgba(229, 9, 20, 0.12) !important;
+}
+
+html.light .bg-yellow-500\/20 {
+  background-color: rgba(234, 179, 8, 0.12) !important;
+}
+
+html.light .bg-pink-500\/20 {
+  background-color: rgba(236, 72, 153, 0.12) !important;
+}
+
+/* ── Filter tabs in Search page ── */
+/* The inline style buttons use #aaa for non-active — these are fine; 
+   but the active state (#e50914 bg) is fine. Override the bg of inactive pills */
+html.light .rounded-full[style*="rgba(255,255,255,0.08)"] {
+  background-color: rgba(0, 0, 0, 0.07) !important;
+}
+
+/* ── Skeleton loaders ── */
+html.light .bg-white\/5.animate-pulse {
+  background-color: rgba(0, 0, 0, 0.07) !important;
+}
+
+/* ── Footer ── */
+html.light footer {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* =============================================
+   MOBILE / TOUCH RESPONSIVE FIXES
+   ============================================= */
+
+/* ── Prevent horizontal overflow on all screen sizes ── */
+html,
+body,
+#root {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* ── Movie card: always show overlay on touch screens ── */
+@media (hover: none) {
+  .touch-overlay {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Disable scale-up on touch (causes layout jump without mouseLeave) */
+  .card-item>div {
+    transform: none !important;
+  }
+}
+
+/* ── Row arrows: always visible on mobile (can't hover on touch) ── */
+@media (max-width: 768px) {
+
+  /* Show row scroll arrows always on mobile */
+  .group\/row button[aria-label="Scroll left"],
+  .group\/row button[aria-label="Scroll right"] {
+    opacity: 1 !important;
+  }
+
+  /* Slightly smaller padding for rows on mobile */
+  .group\/row .flex.gap-2 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+/* ── Banner: reduce height on narrow phones ── */
+@media (max-width: 480px) {
+
+  /* Banner container */
+  [style*="height: 90vh"] {
+    height: 70vh !important;
+    min-height: 380px !important;
+  }
+
+  /* Banner buttons — stack or shrink on 320px */
+  .flex.flex-wrap.gap-3>button {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ── Watchlist / Search grid: 2 cols on tiny phones ── */
+@media (max-width: 400px) {
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ── Modals: full-screen on very small phones ── */
+@media (max-width: 480px) {
+
+  /* MovieModal inner panel */
+  .fixed.inset-0>div[class*="rounded-"] {
+    border-radius: 0 !important;
+    max-height: 100dvh !important;
+    width: 100vw !important;
+    margin: 0 !important;
+  }
+}
+
+/* ── Touch-friendly tap targets (minimum 44px) ── */
+@media (hover: none) {
+  button {
+    min-height: 36px;
+    min-width: 36px;
+  }
+}
