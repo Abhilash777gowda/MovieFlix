@@ -7,7 +7,15 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: [
+        "http://localhost:5173",                  // local dev
+        "https://movieflix.vercel.app",           // old Vercel URL
+        "https://movie-flix-eight-taupe.vercel.app" // NEW Vercel URL
+    ],
+    credentials: true,
+}));
+
 app.use(express.json());
 
 // MongoDB Connection
