@@ -11,6 +11,7 @@ const Movie = ({ item }) => {
     const [saved, setSaved] = useState(false);
     const [hovered, setHovered] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false); // Track image loading
     const { user } = UserAuth();
 
     useEffect(() => {
@@ -61,7 +62,7 @@ const Movie = ({ item }) => {
 
     // Controls are always shown on touch devices; hover-revealed on desktop
     // We use the CSS class "touch-overlay" which is always-visible on touch screens
-    const overlayVisible = hovered;
+    const overlayVisible = hovered && imageLoaded; // Only show overlay if image is loaded
 
     return (
         <>
@@ -75,7 +76,7 @@ const Movie = ({ item }) => {
             >
                 {/* ── Thumbnail ── */}
                 <div
-                    className="relative overflow-hidden rounded-md"
+                    className="relative overflow-hidden rounded-md skeleton-bg"
                     style={{
                         aspectRatio: "16/9",
                         transform: hovered ? "scale(1.08)" : "scale(1)",
@@ -85,10 +86,12 @@ const Movie = ({ item }) => {
                     }}
                 >
                     <img
-                        className="w-full h-full object-cover"
+                        className={`w-full h-full object-cover transition-opacity duration-500 ease-out ${imageLoaded ? "opacity-100" : "opacity-0"
+                            }`}
                         src={imgUrl}
                         alt={item?.title || item?.name}
                         loading="lazy"
+                        onLoad={() => setImageLoaded(true)}
                     />
 
                     {/* Overlay — always visible on touch, hover-only on desktop */}

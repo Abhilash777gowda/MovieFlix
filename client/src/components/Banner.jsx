@@ -12,6 +12,7 @@ const Banner = ({ requestURL }) => {
     const [index, setIndex] = useState(0);
     const [prevIndex, setPrevIndex] = useState(null);
     const [fading, setFading] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false);
     const [selectedMovie, setSelectedMovie] = useState(null);
     const timerRef = useRef(null);
     const url = requestURL || requests.requestPopular;
@@ -36,6 +37,11 @@ const Banner = ({ requestURL }) => {
         }, INTERVAL_MS);
         return () => clearInterval(timerRef.current);
     }, [movies]);
+
+    // Reset image load state when slide changes
+    useEffect(() => {
+        setImageLoaded(false);
+    }, [index]);
 
     const goTo = (getNext) => {
         setFading(true);
@@ -104,15 +110,16 @@ const Banner = ({ requestURL }) => {
                 {/* ─── Current Slide (fades/zooms in) ─── */}
                 <div
                     key={`slide-${index}`}
-                    className="absolute inset-0"
+                    className="absolute inset-0 skeleton-bg"
                     style={{ zIndex: 2, animation: fading ? "fadeOut 0.6s ease-in-out forwards" : "fadeIn 0.8s ease-in-out forwards" }}
                 >
                     {/* Backdrop Image */}
                     <img
                         src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
                         alt={movie?.title || movie?.name}
-                        className="w-full h-full object-cover object-center"
+                        className={`w-full h-full object-cover object-center transition-opacity duration-700 ease-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
                         style={{ animation: "kenBurns 6s ease-in-out forwards" }}
+                        onLoad={() => setImageLoaded(true)}
                         onError={(e) => { e.target.style.display = "none"; }}
                     />
                     {/* Gradient overlays — stronger on mobile so text stays readable */}
