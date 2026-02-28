@@ -54,7 +54,7 @@ const Movie = ({ item }) => {
         }
     };
 
-    const img = item?.backdrop_path || item?.poster_path;
+    const img = item?.poster_path || item?.backdrop_path;
     const imgUrl = img
         ? `https://image.tmdb.org/t/p/w500/${img}`
         : "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=500";
@@ -68,7 +68,7 @@ const Movie = ({ item }) => {
             {/* Card — min width slightly smaller for phones */}
             <div
                 className="relative flex-shrink-0 cursor-pointer group card-item"
-                style={{ width: "clamp(130px, 17vw, 260px)" }}
+                style={{ width: "clamp(115px, 28vw, 240px)" }}
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
                 onClick={() => setShowModal(true)}
@@ -77,7 +77,7 @@ const Movie = ({ item }) => {
                 <div
                     className="relative overflow-hidden rounded-md"
                     style={{
-                        aspectRatio: "16/9",
+                        aspectRatio: "2/3",
                         transform: hovered ? "scale(1.08)" : "scale(1)",
                         transition: "transform 0.35s cubic-bezier(0.4,0,0.2,1)",
                         boxShadow: hovered ? "0 16px 48px rgba(0,0,0,0.8)" : "0 2px 8px rgba(0,0,0,0.4)",

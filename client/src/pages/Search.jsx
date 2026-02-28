@@ -177,8 +177,8 @@ const Search = () => {
                         <span className="text-white font-bold">"{query}"</span>
                     </p>
                     <div
-                        className="grid gap-3"
-                        style={{ gridTemplateColumns: "repeat(auto-fill, minmax(clamp(145px,16vw,240px),1fr))" }}
+                        className="grid gap-3 sm:gap-4 lg:gap-5"
+                        style={{ gridTemplateColumns: "repeat(auto-fill, minmax(clamp(105px,28vw,240px),1fr))" }}
                     >
                         {displayed.map((item, idx) => (
                             <div key={`${item.id}-${idx}`} className="relative">

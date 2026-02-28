@@ -1,0 +1,9 @@
+﻿24596c9 Fix Banner text visibility missing animations
+da5a1f9 Design modern minimal footer
+01624a3 Add progressive image loading with shimmer
+efc2ec0 Update CORS with Vercel URL
+fae1149 Merge branch 'main' of https://github.com/Abhilash777gowda/MovieFlix
+7879350 Move Firebase config to env variables
+734c6c4 Create README.md
+10f6341 Remove node_modules, add .gitignore
+ed8f655 Initial commit

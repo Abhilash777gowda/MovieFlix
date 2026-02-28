@@ -101,19 +101,19 @@ const Watchlist = () => {
                     </header>
 
                     {movies.length > 0 ? (
-                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
+                        <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 md:gap-4">
                             {movies.map((item) => (
                                 <div
                                     key={item.id}
                                     className="group relative bg-[#181818] rounded-md overflow-hidden border border-white/5 shadow-xl"
                                 >
                                     {/* Thumbnail */}
-                                    <div className="relative aspect-video overflow-hidden">
+                                    <div className="relative aspect-[2/3] overflow-hidden">
                                         <img
                                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                             src={
-                                                item?.backdrop_path || item?.poster_path
-                                                    ? `https://image.tmdb.org/t/p/w500/${item.backdrop_path || item.poster_path}`
+                                                item?.poster_path || item?.backdrop_path
+                                                    ? `https://image.tmdb.org/t/p/w500/${item.poster_path || item.backdrop_path}`
                                                     : "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=500"
                                             }
                                             alt={item?.title}
