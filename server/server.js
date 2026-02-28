@@ -8,11 +8,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-    origin: [
-        "http://localhost:5173",                  // local dev
-        "https://movieflix.vercel.app",           // old Vercel URL
-        "https://movie-flix-eight-taupe.vercel.app" // NEW Vercel URL
-    ],
+    origin: true, // Allow all origins during debugging
     credentials: true,
 }));
 
