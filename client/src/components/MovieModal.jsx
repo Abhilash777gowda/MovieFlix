@@ -8,7 +8,7 @@ import { UserAuth } from "../context/AuthContext";
 import PersonModal from "./PersonModal";
 import API_BASE from "../api";
 
-const API_KEY = "92b44f51a2134bda7e85c0ff1a41de6b";
+const API_KEY = import.meta.env.API_KEY
 
 const fmt = (n) => n > 0 ? `$${n.toLocaleString()}` : "N/A";
 const fmtRuntime = (m) => m ? `${Math.floor(m / 60)}h ${m % 60}m` : null;
