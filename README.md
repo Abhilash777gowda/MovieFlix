@@ -154,18 +154,12 @@ npm test
 
 | Service | URL |
 |---|---|
-| Frontend (Vercel) | `https://your-app.vercel.app` |
-| Backend (Render) | `https://your-api.onrender.com` |
+| Frontend (Vercel) | `https://movie-flix-eight-taupe.vercel.app/` |
+| Backend (Render) | `https://movieflix-2zsp.onrender.com` |
 
 Set `VITE_API_URL` on Vercel to point to your Render backend URL.
 
----
 
-## 📸 Screenshots
-
-> _Add screenshots of your app here_
-
----
 
 ## 📄 License
 
