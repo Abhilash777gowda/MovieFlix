@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
     X, Play, Heart, Plus, Check, Star, Clock, Calendar,
-    DollarSign, TrendingUp, Globe, Building2, Tag, Users, Film, ExternalLink
+    DollarSign, TrendingUp, Globe, Building2, Tag, Users, Film, ExternalLink, Image
 } from "lucide-react";
 import axios from "axios";
 import { UserAuth } from "../context/AuthContext";
@@ -83,9 +83,9 @@ const MovieModal = ({ movie, onClose }) => {
                 if (t) setTrailer(t);
             }).catch(() => { });
 
-        // Full details + credits + keywords
+        // Full details + credits + keywords + images
         axios.get(
-            `https://api.themoviedb.org/3/${type}/${movie.id}?api_key=${API_KEY}&append_to_response=credits,keywords,similar,recommendations,external_ids,watch/providers`
+            `https://api.themoviedb.org/3/${type}/${movie.id}?api_key=${API_KEY}&append_to_response=credits,keywords,similar,recommendations,external_ids,watch/providers,images`
         ).then((res) => setDetails(res.data)).catch(() => { });
 
         // Liked / saved
@@ -158,6 +158,7 @@ const MovieModal = ({ movie, onClose }) => {
     const episodes = details?.number_of_episodes;
     const networks = details?.networks?.map((n) => n.name).join(", ");
     const similar = details?.similar?.results?.filter((m) => m.backdrop_path).slice(0, 6) || [];
+    const screenshots = details?.images?.backdrops?.slice(0, 6) || [];
 
     // Watch providers — prefer India (IN), fallback to US
     const watchData = details?.["watch/providers"]?.results;
@@ -353,6 +354,25 @@ const MovieModal = ({ movie, onClose }) => {
                                                 <span key={k.id} className="px-2 py-0.5 text-[10px] bg-white/5 border border-white/8 text-gray-400 rounded">
                                                     {k.name}
                                                 </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* Screenshots */}
+                                {screenshots.length > 0 && (
+                                    <div className="pt-2">
+                                        <p className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-1.5"><Image size={11} /> Screenshots</p>
+                                        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+                                            {screenshots.map((img, i) => (
+                                                <div key={i} className="aspect-video rounded-lg overflow-hidden border border-white/10 group bg-[#181818]">
+                                                    <img
+                                                        src={`https://image.tmdb.org/t/p/w500${img.file_path}`}
+                                                        alt={`${title} screenshot ${i + 1}`}
+                                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                                        loading="lazy"
+                                                    />
+                                                </div>
                                             ))}
                                         </div>
                                     </div>
