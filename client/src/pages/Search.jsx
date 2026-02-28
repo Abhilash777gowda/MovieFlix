@@ -178,7 +178,7 @@ const Search = () => {
                     </p>
                     <div
                         className="grid gap-3 sm:gap-4 lg:gap-5"
-                        style={{ gridTemplateColumns: "repeat(auto-fill, minmax(clamp(105px,28vw,240px),1fr))" }}
+                        style={{ gridTemplateColumns: "repeat(auto-fill, minmax(clamp(140px,40vw,280px),1fr))" }}
                     >
                         {displayed.map((item, idx) => (
                             <div key={`${item.id}-${idx}`} className="relative">

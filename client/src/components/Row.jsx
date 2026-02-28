@@ -78,7 +78,6 @@ const Row = ({ title, fetchURL, rowID }) => {
                         overflowY: "visible",
                         scrollbarWidth: "none",
                         msOverflowStyle: "none",
-                        touchAction: "pan-x",
                         paddingBottom: "24px",
                         marginBottom: "-24px",
                         paddingTop: "12px",

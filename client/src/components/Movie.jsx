@@ -68,7 +68,7 @@ const Movie = ({ item }) => {
             {/* Card — min width slightly smaller for phones */}
             <div
                 className="relative flex-shrink-0 cursor-pointer group card-item"
-                style={{ width: "clamp(115px, 28vw, 240px)" }}
+                style={{ width: "clamp(140px, 38vw, 280px)" }}
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
                 onClick={() => setShowModal(true)}
